@@ -73,7 +73,7 @@ def create_user():
         return jsonify({"msg": "Internal Server Error", "error": str(error)}), 500
     
 
-@api.route("/login", methods=["POST"])
+@api.route("/signin", methods=["POST"])
 def login():
 
     data= request.get_json()

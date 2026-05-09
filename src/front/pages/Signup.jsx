@@ -39,7 +39,7 @@ export const Signup = () => {
                 alert("Usuario creado correctamente");
 
                 // REDIRECCION
-                navigate("/login");
+                navigate("/signin");
 
             } else {
 

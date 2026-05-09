@@ -17,7 +17,7 @@ export const Signin = () => {
         try {
 
             const response = await fetch(
-                import.meta.env.VITE_BACKEND_URL + "/api/login",
+                import.meta.env.VITE_BACKEND_URL + "/api/signin",
                 {
                     method: "POST",
                     headers: {
