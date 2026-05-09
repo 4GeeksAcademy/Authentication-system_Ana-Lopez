@@ -6,12 +6,18 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+
 from werkzeug.security import generate_password_hash, check_password_hash
+
 
 api = Blueprint('api', __name__)
 
 # Allow CORS requests to this API
 CORS(api)
+
 
 
 # @api.route('/hello', methods=['POST', 'GET'])
@@ -24,7 +30,7 @@ CORS(api)
 #     return jsonify(response_body), 200
 
 
-@api.route('/user', methods=['POST'])
+@api.route('/signup', methods=['POST'])
 def create_user():
     # siempre en formato JSON
     data= request.get_json()
@@ -66,3 +72,19 @@ def create_user():
          #en caso de error se captura la excepcion
         print(f"Error al crear usuario: {error}")
         return jsonify({"msg": "Internal Server Error", "error": str(error)}), 500
+    
+
+@api.route("/login", methods=["POST"])
+def login():
+
+    data= request.get_json()
+
+    user= User.query.filter_by(email=data["email"]).first()
+    if not user or not check_password_hash(user.password, data["password"]):
+        return jsonify({"msg": "Invalid email or password"}), 401
+
+
+    access_token = create_access_token(identity=str(user.id))
+    return jsonify({
+        "token": access_token,
+        "user": user.serialize()}), 200
