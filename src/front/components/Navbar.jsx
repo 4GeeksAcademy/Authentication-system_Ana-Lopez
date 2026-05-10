@@ -36,9 +36,7 @@ export const Navbar = () => {
 
 					{
 						token ? (
-
 							<>
-
 								<Link
 									to="/private"
 									className="text-white text-decoration-none"
@@ -79,7 +77,6 @@ export const Navbar = () => {
 						) : (
 
 							<>
-
 								<Link to="/signup">
 									<button className="btn btn-primary">
 										Sign Up
@@ -93,14 +90,10 @@ export const Navbar = () => {
 								</Link>
 
 							</>
-
 						)
 					}
-
 				</div>
-
 			</div>
-
 		</nav>
 	);
 };
