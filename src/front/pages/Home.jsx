@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Home = () => {
@@ -33,20 +32,52 @@ export const Home = () => {
 	}, [])
 
 	return (
-		<div className="text-center mt-5">
-			<h1 className="display-4">Hello Rigo!!</h1>
-			<p className="lead">
-				<img src={rigoImageUrl} className="img-fluid rounded-circle mb-3" alt="Rigo Baby" />
-			</p>
-			<div className="alert alert-info">
-				{store.message ? (
-					<span>{store.message}</span>
-				) : (
-					<span className="text-danger">
-						Loading message from the backend (make sure your python 🐍 backend is running)...
-					</span>
-				)}
-			</div>
-		</div>
+		 <div className="container-fluid min-vh-100 d-flex align-items-center bg-light">
+
+            <div className="container">
+
+                <div className="row justify-content-center text-center">
+
+                    <div className="col-12 col-md-10 col-lg-8">
+
+                        <div className="card shadow-lg border-0 p-4 p-md-5 rounded-4">
+
+                            <h1 className="display-4 fw-bold mb-4">
+                                Welcome to Authentication with JWT 🔐
+                            </h1>
+
+                            <p className="lead text-secondary mb-4">
+                                This project demonstrates a complete authentication
+                                system using React, Flask, JWT, protected routes,
+                                signup, signin and logout functionality.
+                            </p>
+
+                            <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
+
+                                <a
+                                    href="/signup"
+                                    className="btn btn-primary btn-lg px-4"
+                                >
+                                    Create Account
+                                </a>
+
+                                <a
+                                    href="/signin"
+                                    className="btn btn-outline-dark btn-lg px-4"
+                                >
+                                    Sign In
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 	);
 }; 
